@@ -1,5 +1,5 @@
 {
-  "name": "svl",
+  "name": "string-validator-language",
   "version": "0.0.1",
   "description": "",
   "main": "lib/index.js",
