@@ -55,7 +55,7 @@ export const validate = (validator, str) => {
   let valueStack = [];
 
   if(postfixStack.length == 1) {
-    return str.test(new RegExp(postfixStack[0], "gi"));
+    return new RegExp(postfixStack[0], "gi").test(str);
   }
 
   while( postfixStack.length > 0 ) {
