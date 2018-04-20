@@ -30,7 +30,7 @@ test("NOT ('red' OR 'blue' AND NOT('orange'))", () => {
 })
 
 test("One Value", () => {
-  expect(infix2postfix("'red'")).toEqual(["red"])
+  expect(infix2postfix("'red star'")).toEqual(["red star"])
 })
 
 test("'RUBY' AND NOT('STAR')", () => {
