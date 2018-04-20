@@ -22,6 +22,7 @@ export const infix2postfix = str => {
       str = str.replace(valueRegexMatch, "");
     }
     str = str.trim();
+
   } while(str.length > 0)
 
   while(opStack.length > 0) {
@@ -64,13 +65,19 @@ export const validate = (validator, str) => {
       let bol = false;
       switch(item) {
         case "AND":
-          bol = [valueStack.pop(), valueStack.pop()].every(v => v === true || str.search(new RegExp(v, "gi")) != -1);
+          bol = [valueStack.pop(), valueStack.pop()].every(v => v === true || new RegExp(v, "gi").test(str) );
           break;
         case "OR":
-          bol = [valueStack.pop(), valueStack.pop()].some(v => str.search(new RegExp(v, "gi")) != -1);
+          bol = [valueStack.pop(), valueStack.pop()].some(v => new RegExp(v, "gi").test(str) );
           break;
         case "NOT":
-          bol = !valueStack.pop();
+          const lastValue = valueStack.pop();
+          if(typeof(lastValue) == "string") {
+            bol = !new RegExp(lastValue, "gi").test(str);
+          } else if(typeof(lastValue) == "boolean") {
+            bol = !lastValue;
+          }
+
           break;
       }
       valueStack.push(bol)

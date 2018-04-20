@@ -33,3 +33,7 @@ test("(('ruby' AND 'red') OR 'GIA') AND NOT 'orange'", () => {
 test("(('ruby' AND 'red') OR 'GIA') AND 'orange'", () => {
   expect(validate("(('ruby' AND 'red') OR 'GIA') AND 'orange'", validateStr1)).toBe(true);
 })
+
+test("ruby and not star", () => {
+  expect(validate("'ruby' AND NOT 'star'", validateStr1)).toBe(true);
+})
