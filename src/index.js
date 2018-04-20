@@ -18,7 +18,6 @@ export const infix2postfix = str => {
       str = str.replace(match[0], "");
     } else {
       const value = str.match(valueRegexMatch);
-      console.log(value);
       postfixStack.push(value[1]);
       str = str.replace(valueRegexMatch, "");
     }
