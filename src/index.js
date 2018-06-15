@@ -6,12 +6,17 @@ export const infix2postfix = str => {
   let postfixStack = [];
   do {
     const match = str.match(logicRegexMatch);
+
     if(match !== null && match.index == 0) {
       if(match[0] == ")") {
-        do {
+        while( opStack[opStack.length - 1] != "(") {
           postfixStack.push(opStack.pop());
-        } while (opStack[opStack.length - 1] != "(");
-        opStack.pop()
+        }
+        opStack.pop();
+
+        if(opStack[opStack.length - 1] == "NOT") {
+          postfixStack.push(opStack.pop());
+        }
       } else {
         opStack.push(match[0]);
       }
