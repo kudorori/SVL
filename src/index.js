@@ -73,7 +73,7 @@ export const validate = (validator, str) => {
           bol = [valueStack.pop(), valueStack.pop()].every(v => v === true || new RegExp(v, "gi").test(str) );
           break;
         case "OR":
-          bol = [valueStack.pop(), valueStack.pop()].some(v => new RegExp(v, "gi").test(str) );
+          bol = [valueStack.pop(), valueStack.pop()].some(v => v === true || new RegExp(v, "gi").test(str) );
           break;
         case "NOT":
           const lastValue = valueStack.pop();
