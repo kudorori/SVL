@@ -1,5 +1,5 @@
 const logicRegexMatch = /OR|AND|\(|\)|NOT/;
-const valueRegexMatch = /\'([\w\ ]+)\'/;
+const valueRegexMatch = /\'([\w\ \-]+)\'/;
 
 export const infix2postfix = str => {
   let opStack = [];
@@ -18,7 +18,6 @@ export const infix2postfix = str => {
           postfixStack.push(opStack.pop());
         }
       } else {
-        console.log(match[0]);
         opStack.push(match[0]);
       }
       str = str.replace(match[0], "");
