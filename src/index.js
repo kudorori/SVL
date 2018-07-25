@@ -1,11 +1,11 @@
-const logicRegexMatch = /OR|AND|\(|\)|NOT/;
+const logicRegexMatch = /^OR|AND|\(|\)|NOT/;
 const valueRegexMatch = /\'([\w\ \-]+)\'/;
 
 export const infix2postfix = str => {
   let opStack = [];
   let postfixStack = [];
   do {
-    const match = str.match(logicRegexMatch);
+    const match = str.trim().match(logicRegexMatch);
 
     if(match !== null && match.index == 0) {
       if(match[0] == ")") {
