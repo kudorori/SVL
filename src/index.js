@@ -1,4 +1,4 @@
-const logicRegexMatch = /^OR|AND|\(|\)|NOT/;
+const logicRegexMatch = /^(OR|AND|\(|\)|NOT)$/i;
 const valueRegexMatch = /\'([\w\ \-]+)\'/;
 
 export const infix2postfix = str => {
@@ -58,12 +58,13 @@ export const validate = (validator, str) => {
   const postfixStack = typeof(validator) == "array" ? validator : infix2postfix(validator);
   let opStack = [];
   let valueStack = [];
-
+  console.log(postfixStack)
   if(postfixStack.length == 1) {
     return new RegExp(postfixStack[0], "gi").test(str);
   }
 
   while( postfixStack.length > 0 ) {
+
     const item = postfixStack.shift();
     if(logicRegexMatch.test(item)) {
       // logic
@@ -89,6 +90,7 @@ export const validate = (validator, str) => {
     } else {
       valueStack.push(item);
     }
+    
   }
 
   return valueStack[0];

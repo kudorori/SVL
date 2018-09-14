@@ -41,3 +41,12 @@ test("'RUBY' AND NOT('STAR')", () => {
 test("NOT ( 'Vivid Red' OR 'blood' ) AND ( 'Red' )", () => {
   expect(infix2postfix("NOT ( 'Vivid Red' OR 'blood' ) AND ( 'Red' )")).toEqual(["Vivid Red", "blood", "OR", "NOT", "Red", "AND"])
 })
+
+test("('cat' AND 'eye')", () => {
+  expect(infix2postfix("'cat' AND 'eye'")).toEqual(["cat", "eye", "AND"]);
+})
+
+test("('ORANGE' AND 'SHAPPHIRE')", () => {
+  console.log(infix2postfix("'ORANGE' AND 'SHAPPHIRE'"))
+  // expect(infix2postfix("'cat' AND 'eye'")).toEqual(["cat", "eye", "AND"]);
+})
